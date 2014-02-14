@@ -10,20 +10,20 @@ class StudentScraper
 
   def scrape_student
     @name = @doc.search("div.big-comment h3 a").text
-    @quotes = @doc.search("div.blog-title p.home-blog-post-meta").text
+    @excerpt = @doc.search("div.blog-title p.home-blog-post-meta").text
     @description = @doc.search("div.excerpt p").text
-    @htmlpics = @doc.search("div.blog-thumb a img")
-    @indexpics = @htmlpics.collect{|imglink| imglink['src']}
-    @htmllink = @doc.search("div.blog-thumb a")
-    @url = @htmllink.collect{|profilelink| profilelink['href']}
+    htmlpics = @doc.search("div.blog-thumb a img")
+    @indexPic = htmlpics.collect{|imglink| imglink['src']}
+    htmllink = @doc.search("div.blog-thumb a")
+    @url = htmllink.collect{|profilelink| profilelink['href']}
   end
 
   def create_instance
     @student = Student.new
     @student.name = @name
-    @student.quotes = @quotes
+    @student.excerpt = @excerpt
     @student.description = @description
-    @student.indexpics = @indexpics
+    @student.indexPic = @indexPic
     @student.url = @url
     @student.save
     @student
