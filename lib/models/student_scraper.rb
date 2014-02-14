@@ -1,7 +1,3 @@
-require 'nokogiri'
-require 'open-uri'
-
-
 class StudentScraper
   def initialize(url)
     @doc = Nokogiri::HTML(open(url))
