@@ -1,21 +1,25 @@
+# require 'nokogiri'
+# require 'open-uri'
+# require 'pry'
+
 class StudentScraper
   def initialize(url)
     @doc = Nokogiri::HTML(open(url))
   end
 
   def scrape
-    scrape_name
+    scrape_students
     create_instance
   end
 
-  def scrape_student
-    @name = @doc.search("div.big-comment h3 a").text
-    @excerpt = @doc.search("div.blog-title p.home-blog-post-meta").text
-    @description = @doc.search("div.excerpt p").text
+  def scrape_students
+    name = @doc.search("div.big-comment h3 a").text
+    excerpt = @doc.search("div.blog-title p.home-blog-post-meta").text
+    description = @doc.search("div.excerpt p").text
     htmlpics = @doc.search("div.blog-thumb a img")
-    @indexPic = htmlpics.collect{|imglink| imglink['src']}
+    indexPic = htmlpics.collect{|imglink| imglink['src']}
     htmllink = @doc.search("div.blog-thumb a")
-    @url = htmllink.collect{|profilelink| profilelink['href']}
+    url = htmllink.collect{|profilelink| profilelink['href']}
   end
 
   def create_instance
@@ -29,3 +33,6 @@ class StudentScraper
     @student
   end
 end
+
+# scraper = StudentScraper.new('http://students.flatironschool.com/')
+# scraper.scrape_students
