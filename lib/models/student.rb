@@ -6,9 +6,9 @@ class Student
       name text, excerpt text, description text, indexPic text, url text)")
   end
   def save
-    #DB.execute("Insert into students (name) values(?) where name=?",name,excerpt,description,indexpic,url)
-    DB.execute("INSERT INTO student (name,excerpt,description,indexpic,url) values (:name, :excerpt, :description, :indexpic, :url)", to_h)
-
+    DB.execute("INSERT INTO students (name,excerpt,description,indexpic,url) values(?,?,?,?,?)",
+               @name,@excerpt,@description,@indexpic,@url)
+    #DB.execute("INSERT INTO students (name,excerpt,description,indexpic,url) values (:name, :excerpt, :description, :indexpic, :url)", to_h)
   end
   def to_h
     {
@@ -19,9 +19,4 @@ class Student
       :url => url,
     }
   end
-  # Name
-  # Excerpt
-  # Description
-  # IndexPic
-  # ProfileLink
 end
