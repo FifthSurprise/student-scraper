@@ -4,11 +4,7 @@ class Student
   def initialize (studentHash)
     @name = studentHash[:name]
     @excerpt = studentHash[:excerpt]
-<<<<<<< HEAD
-    @description = studentHash[:description].reverse.chomp.reverse.chomp
-=======
-    @description = studentHash[:description].chomp
->>>>>>> bd534192bb92f3c0a02176ddf3f6d2c3f86c16d3
+    @description = studentHash[:description].lstrip.strip
     @indexPic = studentHash[:indexPic]
     @url = studentHash[:url]
 
