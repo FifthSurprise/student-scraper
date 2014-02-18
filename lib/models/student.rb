@@ -18,7 +18,7 @@ class Student
 
   def save
     DB.execute("INSERT INTO students (name,excerpt,description,indexpic,url) values(?,?,?,?,?)",
-               @name,@excerpt,@description,@indexpic,@url)
+               @name,@excerpt,@description,@indexPic,@url)
   end
   def to_h
     {
