@@ -43,3 +43,4 @@ end
 
 # scraper = StudentScraper.new('http://students.flatironschool.com/')
 # puts scraper.scrape_students
+# scraper.scrape_students
