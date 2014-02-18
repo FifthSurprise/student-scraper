@@ -6,7 +6,7 @@ Student.create_table
 
 #scrape all of the students off the page into an array
 scraper = StudentScraper.new('http://students.flatironschool.com')
-scrapedStudentsArray = scraper.scrape
+scrapedStudentsArray = scraper.scrape_students
 
 #create an array for Student objects
 studentObjectList = []
